@@ -27,17 +27,17 @@ def bananabid (my_player_number, my_bananas, monkey_position, opponent_bananas, 
         return 1
     if opponent_bananas < 50 and my_bananas > 30:
         return random.randint(20,30)
-    if turn_number == 1:
-        return random.randint(0, 4)
-    if turn_number <= 3 and turn_number > 1:
-        if opp_bids[-1] > my_bids[-1]:
-            return random.randint(opp_bids[-1], opp_bids[-1] + 4)
-        else:
-            return random.randint(5, 20)
     if monkey_position == 2 and my_player_number == 1:
         return random.randint(opp_bids[-1], opp_bids[-1] + 20)
     if monkey_position == -2 and my_player_number == 2:
         return random.randint(opp_bids[-1], opp_bids[-1] + 20)
+    if turn_number == 1:
+        return random.randint(0, 4)
+    elif turn_number <= 3 and turn_number > 1:
+        if opp_bids[-1] > my_bids[-1]:
+            return random.randint(opp_bids[-1], opp_bids[-1] + 4)
+        else:
+            return random.randint(5, 20)
     elif turn_number >= 4:
         if monkey_position > 0 and my_bananas // 8 > opp_avg * 2 and (my_player_number == 2) and my_bananas > 150:
             return random.randint(opp_avg * 2 , my_bananas // 8) # greater than 0 and player 2 means ur winning
